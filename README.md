@@ -1,7 +1,7 @@
 # Panorama Extension Specification
 
 - **Title:** Panorama
-- **Identifier:** <https://360-geo.github.io/stac-panorama/v1.0.0/schema.json>
+- **Identifier:** <https://raw.githubusercontent.com/360-geo/stac-panorama/main/json-schema/schema.json>
 - **Field Name Prefix:** pano
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal

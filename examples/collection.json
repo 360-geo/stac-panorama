@@ -1,7 +1,7 @@
 {
   "stac_version": "1.1.0",
   "stac_extensions": [
-    "https://360-geo.github.io/stac-panorama/v1.0.0/schema.json"
+    "https://raw.githubusercontent.com/360-geo/stac-panorama/main/json-schema/schema.json"
   ],
   "type": "Collection",
   "id": "dataset-8d4f1b2c-3a6e-4f7d-b9c8-1e2a3b4c5d6e-panorama",

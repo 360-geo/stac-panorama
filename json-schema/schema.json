@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://360-geo.github.io/stac-panorama/v1.0.0/schema.json#",
+  "$id": "https://raw.githubusercontent.com/360-geo/stac-panorama/main/json-schema/schema.json#",
   "title": "Panorama Extension",
   "description": "STAC Panorama Extension for STAC Items and STAC Collections: the projection and orientation of 360° panoramas.",
   "type": "object",
@@ -12,7 +12,7 @@
     "stac_extensions": {
       "type": "array",
       "contains": {
-        "const": "https://360-geo.github.io/stac-panorama/v1.0.0/schema.json"
+        "const": "https://raw.githubusercontent.com/360-geo/stac-panorama/main/json-schema/schema.json"
       }
     },
     "type": {

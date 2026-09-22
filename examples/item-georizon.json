@@ -1,7 +1,7 @@
 {
   "stac_version": "1.1.0",
   "stac_extensions": [
-    "https://360-geo.github.io/stac-panorama/v1.0.0/schema.json",
+    "https://raw.githubusercontent.com/360-geo/stac-panorama/main/json-schema/schema.json",
     "https://stac-extensions.github.io/perspective-imagery/v1.0.0/schema.json",
     "https://stac-extensions.github.io/view/v1.1.0/schema.json"
   ],
