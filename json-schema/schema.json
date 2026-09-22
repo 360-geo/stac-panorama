@@ -103,21 +103,21 @@
     },
     "pano:yaw": {
       "title": "Yaw",
-      "description": "Heading of the reference direction in degrees, clockwise from the north axis of pers:crs (true north by default).",
+      "description": "Heading of the image centre in degrees, clockwise from the north axis of pers:crs (true north by default).",
       "type": "number",
       "minimum": 0,
       "exclusiveMaximum": 360
     },
     "pano:pitch": {
       "title": "Pitch",
-      "description": "Elevation of the reference direction above the horizontal in degrees. Positive looks up.",
+      "description": "Elevation of the image centre above the horizontal in degrees. Positive looks up.",
       "type": "number",
       "minimum": -90,
       "maximum": 90
     },
     "pano:roll": {
       "title": "Roll",
-      "description": "Rotation of the image about the reference direction in degrees. Positive when the right-hand edge tilts down.",
+      "description": "Rotation of the image about its centre in degrees. Positive when the right-hand edge tilts down.",
       "type": "number",
       "exclusiveMinimum": -180,
       "maximum": 180

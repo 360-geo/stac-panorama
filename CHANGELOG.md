@@ -11,13 +11,7 @@ First version, to be released as v1.0.0.
 
 ### Added
 
-- `pano:projection_type` (`equirectangular`), required in Item Properties, superseding
-  `pers:interior_orientation.field_of_view = 360` as the panorama marker
-- `pano:yaw`, `pano:pitch` and `pano:roll`: the orientation of the viewing ray through the image centre, compatible with GPano
-- The world frame: the east-north-up axes of `pers:crs`, true north when `pers:crs` is absent, and grid north for a projected CRS
-- The camera frame, the rotation matrix, the quaternion and the agreement rule with `pers:rotation_matrix`, with test vectors
-- The pixel mapping of equirectangular images
-- Asset inheritance, with thumbnails excluded unless they carry `pano:projection_type`
-- Examples: a Georizon Item in RD New + NAP, a Panoramax Item and a Collection
+- `pano:projection_type` (`equirectangular`)
+- `pano:yaw`, `pano:pitch` and `pano:roll`, relative to the axes of `pers:crs`
 
 [Unreleased]: <https://github.com/360-geo/stac-panorama/commits/main>
