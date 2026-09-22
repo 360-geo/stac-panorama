@@ -1,0 +1,82 @@
+{
+  "stac_version": "1.1.0",
+  "stac_extensions": [
+    "https://360-geo.github.io/stac-panorama/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/perspective-imagery/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/view/v1.1.0/schema.json"
+  ],
+  "type": "Feature",
+  "id": "3f6c2a1e-9b7d-4c5e-8a21-6d0e4b9f7c13",
+  "collection": "dataset-8d4f1b2c-3a6e-4f7d-b9c8-1e2a3b4c5d6e-panorama",
+  "bbox": [
+    6.56836,
+    53.21876,
+    6.56836,
+    53.21876
+  ],
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      6.56836,
+      53.21876
+    ]
+  },
+  "properties": {
+    "datetime": "2026-05-12T09:41:27.350Z",
+    "pano:projection_type": "equirectangular",
+    "pano:yaw": 73.18,
+    "pano:pitch": -1.27,
+    "pano:roll": 0.64,
+    "pers:perspective_center": [
+      233895.1,
+      581996.23,
+      5.27
+    ],
+    "pers:crs": 28992,
+    "pers:vertical_crs": 5709,
+    "pers:rotation_matrix": [
+      0.289111,
+      -0.95723,
+      -0.011167,
+      0.024447,
+      -0.004279,
+      0.999692,
+      -0.956983,
+      -0.289295,
+      0.022164
+    ],
+    "view:azimuth": 74.12
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://georizon.nl/api/stac-v1/tenant/0b1e7c4a-5d2f-4e8b-9c3a-7f6e2d1a8b40/collections/dataset-8d4f1b2c-3a6e-4f7d-b9c8-1e2a3b4c5d6e-panorama/items/3f6c2a1e-9b7d-4c5e-8a21-6d0e4b9f7c13",
+      "type": "application/geo+json"
+    },
+    {
+      "rel": "collection",
+      "href": "https://georizon.nl/api/stac-v1/tenant/0b1e7c4a-5d2f-4e8b-9c3a-7f6e2d1a8b40/collections/dataset-8d4f1b2c-3a6e-4f7d-b9c8-1e2a3b4c5d6e-panorama",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "https://georizon.nl/api/stac-v1/tenant/0b1e7c4a-5d2f-4e8b-9c3a-7f6e2d1a8b40/collections/dataset-8d4f1b2c-3a6e-4f7d-b9c8-1e2a3b4c5d6e-panorama",
+      "type": "application/json"
+    },
+    {
+      "rel": "root",
+      "href": "https://georizon.nl/api/stac-v1/tenant/0b1e7c4a-5d2f-4e8b-9c3a-7f6e2d1a8b40",
+      "type": "application/json"
+    }
+  ],
+  "assets": {
+    "image": {
+      "href": "https://storage.georizon.nl/datasets/8d4f1b2c-3a6e-4f7d-b9c8-1e2a3b4c5d6e/panoramas/2026-05-12/pano_000412.jpg",
+      "title": "Source image",
+      "type": "image/jpeg",
+      "roles": [
+        "data"
+      ]
+    }
+  }
+}

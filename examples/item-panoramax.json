@@ -1,0 +1,160 @@
+{
+  "stac_version": "1.0.0",
+  "stac_extensions": [
+    "https://360-geo.github.io/stac-panorama/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/view/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/perspective-imagery/v1.0.0/schema.json",
+    "https://stac-extensions.github.io/tiled-assets/v1.0.0/schema.json"
+  ],
+  "type": "Feature",
+  "id": "9903afb0-c213-4ed1-98ca-a4138e2784a9",
+  "collection": "6a0153f0-4073-4d4f-b4fb-faef0fb7b9c4",
+  "bbox": [
+    4.889805,
+    52.370114,
+    4.889805,
+    52.370114
+  ],
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      4.889805,
+      52.370114
+    ]
+  },
+  "providers": [
+    {
+      "id": "6fb3e824-690b-4b43-b197-525f82f6687e",
+      "name": "Panoramax Test-NL",
+      "roles": [
+        "producer"
+      ]
+    },
+    {
+      "name": "City of Amsterdam",
+      "roles": [
+        "producer"
+      ]
+    }
+  ],
+  "properties": {
+    "datetime": "2023-01-13T07:43:32.070430+00:00",
+    "datetimetz": "2023-01-13T08:43:32.070430+01:00",
+    "created": "2026-01-26T18:20:30.950672+00:00",
+    "updated": "2026-01-26T18:20:30.950672+00:00",
+    "license": "CC-BY-SA-4.0",
+    "pano:projection_type": "equirectangular",
+    "pano:yaw": 198.597043071691,
+    "pano:pitch": -1.05986757610648,
+    "pano:roll": -0.43629145766702,
+    "view:azimuth": 198.597043071691,
+    "pers:interior_orientation": {
+      "field_of_view": 360,
+      "sensor_array_dimensions": [
+        8000,
+        4000
+      ]
+    },
+    "exif": {
+      "Exif.GPSInfo.GPSImgDirection": "3599/10",
+      "Xmp.GPano.PoseHeading": "198.597043071691",
+      "Xmp.GPano.PosePitch": "-1.05986757610648",
+      "Xmp.GPano.PoseRoll": "-0.43629145766702",
+      "Xmp.GPano.ProjectionType": "equirectangular"
+    },
+    "geovisio:image": "https://nl.panoramax.xyz/images/99/03/af/b0/c213-4ed1-98ca-a4138e2784a9.jpg",
+    "geovisio:thumbnail": "https://nl.panoramax.xyz/derivates/99/03/af/b0/c213-4ed1-98ca-a4138e2784a9/thumb.jpg",
+    "geovisio:producer": "Panoramax Test-NL",
+    "quality:horizontal_accuracy": 2,
+    "tiles:tile_matrix_sets": {
+      "geovisio": {
+        "type": "TileMatrixSetType",
+        "title": "GeoVisio tile matrix for picture 9903afb0-c213-4ed1-98ca-a4138e2784a9",
+        "identifier": "geovisio-9903afb0-c213-4ed1-98ca-a4138e2784a9",
+        "tileMatrix": [
+          {
+            "type": "TileMatrixType",
+            "tileWidth": 1000,
+            "identifier": "0",
+            "tileHeight": 1000,
+            "matrixWidth": 8,
+            "matrixHeight": 4,
+            "topLeftCorner": [
+              0,
+              0
+            ],
+            "scaleDenominator": 1
+          }
+        ]
+      }
+    }
+  },
+  "links": [
+    {
+      "rel": "license",
+      "href": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "title": "License for this object (CC-BY-SA-4.0)"
+    },
+    {
+      "rel": "self",
+      "href": "https://api.panoramax.xyz/api/collections/6a0153f0-4073-4d4f-b4fb-faef0fb7b9c4/items/9903afb0-c213-4ed1-98ca-a4138e2784a9",
+      "type": "application/geo+json"
+    },
+    {
+      "rel": "collection",
+      "href": "https://api.panoramax.xyz/api/collections/6a0153f0-4073-4d4f-b4fb-faef0fb7b9c4",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "https://api.panoramax.xyz/api/collections/6a0153f0-4073-4d4f-b4fb-faef0fb7b9c4",
+      "type": "application/json"
+    },
+    {
+      "rel": "root",
+      "href": "https://api.panoramax.xyz/api",
+      "type": "application/json",
+      "title": "Instance catalog"
+    }
+  ],
+  "assets": {
+    "hd": {
+      "href": "https://nl.panoramax.xyz/images/99/03/af/b0/c213-4ed1-98ca-a4138e2784a9.jpg",
+      "type": "image/jpeg",
+      "roles": [
+        "data"
+      ],
+      "title": "HD picture",
+      "description": "Highest resolution available of this picture"
+    },
+    "sd": {
+      "href": "https://nl.panoramax.xyz/derivates/99/03/af/b0/c213-4ed1-98ca-a4138e2784a9/sd.jpg",
+      "type": "image/jpeg",
+      "roles": [
+        "visual"
+      ],
+      "title": "SD picture",
+      "description": "Picture in standard definition (fixed width of 2048px)"
+    },
+    "thumb": {
+      "href": "https://nl.panoramax.xyz/derivates/99/03/af/b0/c213-4ed1-98ca-a4138e2784a9/thumb.jpg",
+      "type": "image/jpeg",
+      "roles": [
+        "thumbnail"
+      ],
+      "title": "Thumbnail",
+      "description": "Picture in low definition (fixed width of 500px)"
+    }
+  },
+  "asset_templates": {
+    "tiles": {
+      "href": "https://nl.panoramax.xyz/derivates/99/03/af/b0/c213-4ed1-98ca-a4138e2784a9/tiles/{TileCol}_{TileRow}.jpg",
+      "type": "image/jpeg",
+      "roles": [
+        "data"
+      ],
+      "title": "HD tiled picture",
+      "description": "Highest resolution available of this picture, as tiles"
+    }
+  }
+}

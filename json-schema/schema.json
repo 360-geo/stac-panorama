@@ -1,8 +1,8 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$id": "https://stac-extensions.github.io/template/v0.1.0/schema.json#",
-  "title": "Template Extension",
-  "description": "STAC Template Extension for STAC Catalogs, STAC Collections and STAC Items.",
+  "$id": "https://360-geo.github.io/stac-panorama/v1.0.0/schema.json#",
+  "title": "Panorama Extension",
+  "description": "STAC Panorama Extension for STAC Items and STAC Collections: the projection and orientation of 360° panoramas.",
   "type": "object",
   "required": [
     "stac_extensions",
@@ -12,65 +12,70 @@
     "stac_extensions": {
       "type": "array",
       "contains": {
-        "const": "https://stac-extensions.github.io/template/v0.1.0/schema.json"
+        "const": "https://360-geo.github.io/stac-panorama/v1.0.0/schema.json"
       }
     },
     "type": {
-      "$comment": "List the allowed STAC object types here, any of: Catalog, Collection, Feature (for Items)",
       "type": "string",
       "enum": [
-        "Catalog",
         "Collection",
         "Feature"
       ]
     },
     "assets": {
-      "$comment": "This validates the fields in Item Assets, but does not require them.",
+      "$comment": "This validates the fields in Item and Collection Assets, but does not require them.",
       "type": "object",
       "additionalProperties": {
-        "$ref": "#/definitions/fieldsAndBands"
+        "$ref": "#/definitions/fields"
       }
     },
-    "links": {
-      "$comment": "This validates the fields in links, remove this if not applicable.",
-      "type": "array",
-      "items": {
+    "asset_templates": {
+      "$comment": "This validates the fields in asset templates of the Tiled Assets extension, but does not require them.",
+      "type": "object",
+      "additionalProperties": {
         "$ref": "#/definitions/fields"
       }
     },
     "assetTemplates": {
-      "$comment": "This validates the fields in asset templates, remove this if not applicable.",
+      "$comment": "This validates the fields in asset templates of the Asset Templates extension, but does not require them.",
       "type": "object",
       "additionalProperties": {
-        "$ref": "#/definitions/fieldsAndBands"
-      }
-    },
-    "linkTemplates": {
-      "$comment": "This validates the fields in link templates, remove this if not applicable.",
-      "type": "array",
-      "items": {
         "$ref": "#/definitions/fields"
       }
     }
   },
   "oneOf": [
     {
-      "$comment": "This validates the fields in the item properties, remove this if not applicable.",
+      "$comment": "This is the schema for STAC Items.",
       "type": "object",
-      "required": ["type", "properties"],
+      "required": [
+        "type",
+        "properties"
+      ],
       "properties": {
         "type": {
           "const": "Feature"
         },
         "properties": {
-          "$ref": "#/definitions/fieldsAndBands"
+          "allOf": [
+            {
+              "required": [
+                "pano:projection_type"
+              ]
+            },
+            {
+              "$ref": "#/definitions/fields"
+            }
+          ]
         }
       }
     },
     {
-      "$comment": "This is the schema for top-level fields and item assets in STAC Collections, remove this fully or in parts if not applicable.",
+      "$comment": "This is the schema for STAC Collections: summaries and item asset definitions.",
       "type": "object",
-      "required": ["type"],
+      "required": [
+        "type"
+      ],
       "properties": {
         "type": {
           "const": "Collection"
@@ -79,136 +84,133 @@
           "$ref": "#/definitions/summaries"
         },
         "item_assets": {
-          "$comment": "This validates the fields in item assets, remove this if not applicable.",
           "type": "object",
           "additionalProperties": {
-            "$ref": "#/definitions/fieldsAndBands"
+            "$ref": "#/definitions/fields"
           }
         }
-      },
-      "allOf": [
-        {
-          "$ref": "#/definitions/fieldsAndBands"
-        }
-      ]
-    },
-    {
-      "$comment": "This is the schema for top-level fields in STAC Catalogs, remove this fully or in parts if not applicable.",
-      "type": "object",
-      "required": ["type"],
-      "properties": {
-        "type": {
-          "const": "Catalog"
-        }
-      },
-      "allOf": [
-        {
-          "$ref": "#/definitions/fields"
-        }
-      ]
+      }
     }
   ],
   "definitions": {
-    "template:new_field": {
-      "type": "string"
+    "pano:projection_type": {
+      "title": "Projection type",
+      "description": "How the image maps directions to pixels.",
+      "type": "string",
+      "enum": [
+        "equirectangular"
+      ]
     },
-    "template:xyz": {
-      "type": "object",
-      "required": [
-        "x",
-        "y",
-        "z"
-      ],
-      "properties": {
-        "x": {
-          "type": "number"
-        },
-        "y": {
-          "type": "number"
-        },
-        "z": {
-          "type": "number"
-        }
-      }
+    "pano:yaw": {
+      "title": "Yaw",
+      "description": "Heading of the reference direction in degrees, clockwise from the north axis of pers:crs (true north by default).",
+      "type": "number",
+      "minimum": 0,
+      "exclusiveMaximum": 360
     },
-    "template:another_one": {
-      "type": "array",
-      "items": {
-        "type": "number"
-      }
+    "pano:pitch": {
+      "title": "Pitch",
+      "description": "Elevation of the reference direction above the horizontal in degrees. Positive looks up.",
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "pano:roll": {
+      "title": "Roll",
+      "description": "Rotation of the image about the reference direction in degrees. Positive when the right-hand edge tilts down.",
+      "type": "number",
+      "exclusiveMinimum": -180,
+      "maximum": 180
     },
     "fields": {
-      "$comment": "Add your new fields here. Don't require them here as they would be required in all places where we reference the fields as possibly allowed.",
+      "$comment": "The fields of this extension. They are not required here, because this definition is referenced wherever they may appear.",
       "type": "object",
       "properties": {
-        "template:new_field": {
-          "$ref": "#/definitions/template:new_field"
+        "pano:projection_type": {
+          "$ref": "#/definitions/pano:projection_type"
         },
-        "template:xyz": {
-          "$ref": "#/definitions/template:xyz"
+        "pano:yaw": {
+          "$ref": "#/definitions/pano:yaw"
         },
-        "template:another_one": {
-          "$ref": "#/definitions/template:another_one"
+        "pano:pitch": {
+          "$ref": "#/definitions/pano:pitch"
+        },
+        "pano:roll": {
+          "$ref": "#/definitions/pano:roll"
         }
       },
       "patternProperties": {
-        "^(?!template:)": {
-          "$comment": "Above, change `template` to the prefix of this extension"
+        "^(?!pano:)": {
+          "$comment": "Fields without the pano: prefix are not validated here."
         }
       },
       "additionalProperties": false
     },
-    "fieldsAndBands": {
-      "allOf": [
-        {
-          "$ref": "#/definitions/fields"
-        },
-        {
-          "properties": {
-            "bands": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/fields"
-              }
-            }
-          }
-        }
-      ]
-    },
     "summaries": {
-      "$comment": "These are examples summaries that allows lists, ranges and JSON schemas, depending on how it makes sense for the individual data types of the fields. Validation only works for lists and ranges. JSON Schema (type: object) can always be provided for fields, but the corresponding schema for lists (type: array and items) and ranges (properties) should only be provided if it actually makes sense.",
+      "$comment": "Summaries as a list of values, or as a range for the angles.",
       "type": "object",
       "properties": {
-        "template:new_field": {
-          "type": ["array", "object"],
+        "pano:projection_type": {
+          "type": "array",
           "items": {
-            "$ref": "#/definitions/template:new_field"
+            "$ref": "#/definitions/pano:projection_type"
+          }
+        },
+        "pano:yaw": {
+          "type": [
+            "array",
+            "object"
+          ],
+          "items": {
+            "$ref": "#/definitions/pano:yaw"
           },
           "properties": {
             "minimum": {
-              "$ref": "#/definitions/template:new_field"
+              "$ref": "#/definitions/pano:yaw"
             },
             "maximum": {
-              "$ref": "#/definitions/template:new_field"
+              "$ref": "#/definitions/pano:yaw"
             }
           }
         },
-        "template:xyz": {
-          "type": ["array", "object"],
+        "pano:pitch": {
+          "type": [
+            "array",
+            "object"
+          ],
           "items": {
-            "$ref": "#/definitions/template:xyz"
+            "$ref": "#/definitions/pano:pitch"
+          },
+          "properties": {
+            "minimum": {
+              "$ref": "#/definitions/pano:pitch"
+            },
+            "maximum": {
+              "$ref": "#/definitions/pano:pitch"
+            }
           }
         },
-        "template:another_one": {
-          "type": ["array", "object"],
+        "pano:roll": {
+          "type": [
+            "array",
+            "object"
+          ],
           "items": {
-            "$ref": "#/definitions/template:another_one"
+            "$ref": "#/definitions/pano:roll"
+          },
+          "properties": {
+            "minimum": {
+              "$ref": "#/definitions/pano:roll"
+            },
+            "maximum": {
+              "$ref": "#/definitions/pano:roll"
+            }
           }
         }
       },
       "patternProperties": {
-        "^(?!template:)": {
-          "$comment": "Above, change `template` to the prefix of this extension"
+        "^(?!pano:)": {
+          "$comment": "Summaries without the pano: prefix are not validated here."
         }
       },
       "additionalProperties": false
